@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
-                                http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-            id="WebApp_ID" version="3.1">
-  <servlet>
-    <description></description>
-    <display-name>PrimeiroServlet</display-name>
-    <servlet-name>PrimeiroServlet</servlet-name>
-    <servlet-class>controller.PrimeiroServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>PrimeiroServlet</servlet-name>
-    <url-pattern>/PrimeiroServlet</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="PrimeiroServlet" version="3.1">
   <display-name>ClientesWeb</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -24,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>PrimeiroServlet</display-name>
+    <servlet-name>PrimeiroServlet</servlet-name>
+    <servlet-class>controller.PrimeiroServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PrimeiroServlet</servlet-name>
+    <url-pattern>/PrimeiroServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
