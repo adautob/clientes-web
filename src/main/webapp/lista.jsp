@@ -1,5 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %> 
+<%@page import="dao.Banco"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page import="model.Cliente" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+
+<% List<Cliente> clientes = Banco.getLista_cliente(); %>
+
 
 <!DOCTYPE html>
 <html>
@@ -44,24 +50,25 @@
 						<th>#</th>
 						<th>Nome</th>
 						<th>CPF</th>
-						<th>Nascimento</th>
-						<th>Situação</th>
+						<th>Telefone</th>
+
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach items="${clientes}" var="cliente">
+				<% for (Cliente cliente: clientes){%>
+				
 							<tr>
-								<td>${cliente.id}</td>
-								<td>${cliente.nome}</td>
-								<td>${cliente.cpf}</td>
-								<td>${cliente.nascimento}</td>
-								<td>${cliente.situacao}</td>
+								<td><%= cliente.getId() %></td>
+								<td><%= cliente.getNome() %></td>
+								<td><%= cliente.getEmail() %></td>
+								<td><%= cliente.getTelefone() %></td>
+
 								<td>
-									<a href="ClienteDestroy?clienteId=${cliente.id}">deletar</a> |
-									<a href="ClienteUpdate?clienteId=${cliente.id}">atualizar</a>
+									<a href="ClienteDestroy?clienteId=${cliente.getId()}">deletar</a> |
+									<a href="ClienteUpdate?clienteId=<%= cliente.getId()%>">atualizar</a>
 								</td>
 							</tr>
-						</c:forEach>
+				<%} %>
 				</tbody>
 			</table>
 			<h5><a href="index.html">Voltar para o Cadastro de Clientes</a></h5>
