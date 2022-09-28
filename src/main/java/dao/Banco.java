@@ -1,25 +1,25 @@
 package dao;
 
-import model.Cliente;
 import java.util.ArrayList;
-import java.util.List;
+
+import model.Cliente;
 
 
 
 public class Banco {
 	
-	private static List<Cliente> lista_cliente = new ArrayList<Cliente>();
+	public static ArrayList<Cliente> clientes;
 	
-
-	public static List<Cliente> getLista_cliente() {
-		Cliente c3 = new Cliente(3, "Paulo", "email@email.com", "3435454");
-		lista_cliente.add(c3);
-		return lista_cliente;
+	public Banco() {
+		
+	}
+	
+	public static void inicia() {
+		clientes = new ArrayList<Cliente>();
+		
+		Cliente c1 = new Cliente(1, "Maria", "maria@email.com", "4839844385");
+		clientes.add(c1);
+		
 	}
 
-	
-	
-
-	
-	
 }

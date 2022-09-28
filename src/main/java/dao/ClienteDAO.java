@@ -7,5 +7,14 @@ public class ClienteDAO {
 		
 	}
 	
+	public void AdicionarCliente(Cliente cliente) {
+		Banco.clientes.add(cliente);
+		
+	}
+	
+	public boolean RemoverCliente(Cliente cliente) {
+		return Banco.clientes.remove(cliente);
+	}
+	
 
 }

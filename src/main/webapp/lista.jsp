@@ -4,7 +4,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 
-<% List<Cliente> clientes = Banco.getLista_cliente(); %>
+<% Banco.inicia();  %>
 
 
 <!DOCTYPE html>
@@ -55,7 +55,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				<% for (Cliente cliente: clientes){%>
+				<% for (Cliente cliente: Banco.clientes){%>
 				
 							<tr>
 								<td><%= cliente.getId() %></td>
