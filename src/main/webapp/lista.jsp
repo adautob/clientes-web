@@ -1,10 +1,12 @@
 <%@page import="dao.Banco"%>
+<%@ page import="dao.ClienteDAO" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="model.Cliente" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 
-<% Banco.inicia();  %>
+<% Banco.inicia();%>
+
 
 
 <!DOCTYPE html>
@@ -64,7 +66,7 @@
 								<td><%= cliente.getTelefone() %></td>
 
 								<td>
-									<a href="ClienteDestroy?clienteId=${cliente.getId()}">deletar</a> |
+									<a href="">deletar</a> |
 									<a href="ClienteUpdate?clienteId=<%= cliente.getId()%>">atualizar</a>
 								</td>
 							</tr>
