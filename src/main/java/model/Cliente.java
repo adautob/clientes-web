@@ -16,6 +16,10 @@ public class Cliente {
 		this.telefone = telefone;
 	}
 	
+	public Cliente() {
+		
+	}
+
 	public int getId() {
 		return id;
 	}

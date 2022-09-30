@@ -14,8 +14,13 @@ public class ClienteDAO {
 		
 	}
 	
-	public boolean RemoverCliente(Cliente cliente) {
-		return Banco.clientes.remove(cliente);
+	public void RemoverCliente(int id) {
+		for (int i = 0; i < Banco.clientes.size(); i++) {
+			if (Banco.clientes.get(i).getId()==id)
+				Banco.clientes.remove(i);
+		}
+		
+		
 	}
 	
 	public ArrayList<Cliente> SelecionarTodos(){
