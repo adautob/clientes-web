@@ -64,8 +64,8 @@
 								<td><%= cliente.getTelefone() %></td>
 
 								<td>
-									<a href="deletar">deletar</a> |
-									<a href="javascript: confirmar(<%= cliente.getId()%>)">Apagar</a>
+									<a href="select?id=<%= cliente.getId() %>">Atualizar</a> |
+									<a href="javascript: confirmar(<%= cliente.getId() %>)">Apagar</a>
 								</td>
 							</tr>
 				<%} %>

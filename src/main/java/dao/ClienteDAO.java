@@ -10,6 +10,14 @@ public class ClienteDAO {
 	}
 	
 	public void AdicionarCliente(Cliente cliente) {
+		
+		// código para incrementar o ID, pois este não será fornecido pelo usuário
+		int idMaior = 0;
+		for (Cliente cli : Banco.clientes) {
+			if (cli.getId() > idMaior) idMaior = cli.getId();
+		}
+		idMaior++;
+		cliente.setId(idMaior);
 		Banco.clientes.add(cliente);
 		
 	}
@@ -28,11 +36,19 @@ public class ClienteDAO {
 	}
 	
 	public Cliente getCliente(int index) {
-		return Banco.clientes.get(index);
+		Cliente cliente = new Cliente();
+		for (int i = 0; i < Banco.clientes.size(); i++) {
+			if (Banco.clientes.get(i).getId()==index)
+				cliente = Banco.clientes.get(i);
+		}
+		return cliente;
 	}
 	
-	public void AtualizarCliente(int index, Cliente cliente) {
-		Banco.clientes.set(index, cliente);
+	public void AtualizarCliente(int id, Cliente cliente) {
+		for (int i = 0; i < Banco.clientes.size(); i++) {
+			if (Banco.clientes.get(i).getId()==id)
+				Banco.clientes.set(i, cliente);
+		}
 	}
 
 }
