@@ -23,6 +23,7 @@ public class Controller extends HttpServlet {
 	
 	ClienteDAO clienteDAO = new ClienteDAO();
 
+
     public Controller() {
         super();
 		Banco.inicia();
@@ -81,11 +82,12 @@ public class Controller extends HttpServlet {
 	}
 	
 	protected void adicionarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		cliente.setId(0);
-		cliente.setNome(request.getParameter("nome"));
-		cliente.setEmail(request.getParameter("email"));
-		cliente.setTelefone(request.getParameter("telefone"));
-		clienteDAO.AdicionarCliente(cliente);
+		Cliente c = new Cliente();
+		c.setId(0);
+		c.setNome(request.getParameter("nome"));
+		c.setEmail(request.getParameter("email"));
+		c.setTelefone(request.getParameter("telefone"));
+		clienteDAO.AdicionarCliente(c);
 		response.sendRedirect("Controller");
 		
 	}

@@ -5,20 +5,21 @@ import model.Cliente;
 
 public class ClienteDAO {
 	
+	
 	public ClienteDAO() {
 		
 	}
 	
-	public void AdicionarCliente(Cliente cliente) {
+	public void AdicionarCliente(Cliente c) {
 		
 		// código para incrementar o ID, pois este não será fornecido pelo usuário
 		int idMaior = 0;
-		for (Cliente cli : Banco.clientes) {
+		for (Cliente cli : SelecionarTodos()) {
 			if (cli.getId() > idMaior) idMaior = cli.getId();
 		}
-		idMaior++;
-		cliente.setId(idMaior);
-		Banco.clientes.add(cliente);
+
+		c.setId(++idMaior);
+		Banco.clientes.add(c);
 		
 	}
 	
