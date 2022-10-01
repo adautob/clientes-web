@@ -9,28 +9,30 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h1>Editar cliente</h1>
-	<form name="frmCliente" action="update">
-		<table>
-			<tr>
-				<td><input type="text" name="id" id="caixa3" readonly
-					value="<%out.print(request.getAttribute("id"));%>"></td>
-			</tr>
-			<tr>
-				<td><input type="text" name="nome" class="Caixa1"
-					value="<%out.print(request.getAttribute("nome"));%>"></td>
-			</tr>
-			<tr>
-				<td><input type="text" name="email" class="Caixa2"
-					value="<%out.print(request.getAttribute("email"));%>"></td>
-			</tr>
-			<tr>
-				<td><input type="text" name="telefone" class="Caixa1"
-					value="<%out.print(request.getAttribute("telefone"));%>"></td>
-			</tr>
-		</table>
-		<input type="button" value="Salvar" class="Botao1" onclick="validar()">
-	</form>
-	<script src="scripts/validador.js"></script>
+	<h3>Editar cliente</h3>
+	<div class="container">
+		<form name="frmCliente" action="update">
+			<table>
+				<tr>
+					<td><input type="text" name="id" id="caixa3" readonly
+						value="<%out.print(request.getAttribute("id"));%>"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="nome" class="Caixa1"
+						value="<%out.print(request.getAttribute("nome"));%>"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="email" class="Caixa2"
+						value="<%out.print(request.getAttribute("email"));%>"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="telefone" class="Caixa1"
+						value="<%out.print(request.getAttribute("telefone"));%>"></td>
+				</tr>
+			</table>
+			<input type="button" value="Salvar" class="Botao1"	onclick="validar()">
+		</form>
+		<script src="scripts/validador.js"></script>
+	</div>
 </body>
 </html>
