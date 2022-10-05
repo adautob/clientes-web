@@ -18,21 +18,28 @@
 						value="<%out.print(request.getAttribute("id"));%>"></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="nome" class="Caixa1"
+					<td><input type="text" name="nome" class="Caixa1" required
 						value="<%out.print(request.getAttribute("nome"));%>"></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="email" class="Caixa2"
+					<td><input type="text" name="email" class="Caixa2" required
 						value="<%out.print(request.getAttribute("email"));%>"></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="telefone" class="Caixa1"
+					<td><input type="text" name="telefone" class="Caixa1" id="fone"
 						value="<%out.print(request.getAttribute("telefone"));%>"></td>
 				</tr>
 			</table>
-			<input type="button" value="Salvar" class="Botao1"	onclick="validar()">
+			<input type="submit" value="Salvar" class="Botao1">
 		</form>
-		<script src="scripts/validador.js"></script>
+		<script src="https://unpkg.com/imask"></script>
+		<script>
+			var element = document.getElementById('fone');
+			var maskOptions = {
+				mask : '(00) 00000-0000'
+			};
+			var mask = IMask(element, maskOptions);
+		</script>
 	</div>
 </body>
 </html>

@@ -12,20 +12,33 @@
 			<table>
 				<tr>
 					<td><input type="text" name="nome" placeholder="Nome"
-						class="Caixa1"></td>
+						class="Caixa1" required></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="email" placeholder="E-mail"
-						class="Caixa1"></td>
+					<td><input type="email" name="email" placeholder="E-mail"
+						class="Caixa1" required></td>
 				</tr>
 				<tr>
 					<td><input type="text" name="telefone" placeholder="Telefone"
-						class="Caixa2"></td>
+						class="Caixa2" id="fone"></td>
 				</tr>
 			</table>
-			<input type="button" value="Adicionar" onclick="validar()" class="Botao1">
+			<input type="submit" value="Adicionar" 
+				class="Botao1">
 		</form>
+
+		
+		
+		
 		<script src="scripts/validador.js"></script>
+		<script src="https://unpkg.com/imask"></script>
+		<script>
+			var element = document.getElementById('fone');
+			var maskOptions = {
+				mask : '(00) 00000-0000'
+			};
+			var mask = IMask(element, maskOptions);
+		</script>
 	</div>
 </body>
 </html>
