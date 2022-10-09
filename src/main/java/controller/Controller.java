@@ -34,16 +34,22 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String action = request.getServletPath();
-		if (action.equals("/Controller")) {
-			clientes(request, response);
-		} else if (action.equals("/select")) {
+		switch (action) {
+		case "/Controller":
+			clientes(request, response);	
+			break;
+		case "/select":
 			listarCliente(request, response);
-		} else if (action.equals("/update")) {
+			break;
+		case "/update":
 			editarCliente(request, response);
-		} else if (action.equals("/insert")) {
+			break;
+		case "/insert":
 			adicionarCliente(request, response);
-		} else if (action.equals("/delete")){
+			break;
+		case "/delete":
 			removerCliente(request, response);
+			break;
 		}
 	}
 	
