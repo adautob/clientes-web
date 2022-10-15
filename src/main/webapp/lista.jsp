@@ -47,8 +47,8 @@
 							<td><%=cliente.getEmail()%></td>
 							<td><%=cliente.getTelefone()%></td>
 
-							<td><a href="select?id=<%=cliente.getId()%>">Atualizar</a>
-								| <a href="javascript: confirmar(<%=cliente.getId()%>)">Apagar</a>
+							<td><a class="btn btn-outline-primary btn-sm" href="select?id=<%=cliente.getId()%>">Atualizar</a>
+								<a class="btn btn-outline-secondary btn-sm" href="javascript: confirmar(<%=cliente.getId()%>)">Apagar</a>
 							</td>
 						</tr>
 						<%
@@ -57,7 +57,7 @@
 					</tbody>
 				</table>
 				<h5>
-					<a href="novo.html">Adicionar Cliente</a>
+					<a class="btn btn-primary btn-sm" href="novo.html">Adicionar Cliente</a>
 				</h5>
 			</div>
 		</div>
