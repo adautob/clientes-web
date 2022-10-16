@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,32 +10,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Banco;
-import dao.ClienteDAO;
 import model.Cliente;
+import service.ControllerService;
 
-
-@WebServlet(urlPatterns = {"/Controller", "/delete", "/select", "/update", "/insert"})
+@WebServlet(urlPatterns = { "/Controller", "/delete", "/select", "/update", "/insert" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	Cliente cliente = new Cliente();
-	
-	ClienteDAO clienteDAO = new ClienteDAO();
 
+	ControllerService controllerService = new ControllerService();
 
-    public Controller() {
-        super();
+	public Controller() {
+
 		Banco.inicia();
 
-    }
+	}
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		// Verifica path recebido no request para redirecionar url
 		String action = request.getServletPath();
 		switch (action) {
 		case "/Controller":
-			clientes(request, response);	
+			clientes(request, response);
 			break;
 		case "/select":
 			listarCliente(request, response);
@@ -52,56 +48,67 @@ public class Controller extends HttpServlet {
 			break;
 		}
 	}
-	
-	protected void clientes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Cliente> lista = Banco.clientes;
-		request.setAttribute("clientes", lista);
+
+	// pega lista de cliente e manda na requisição
+	protected void clientes(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setAttribute("clientes", controllerService.listaClientes());
 		RequestDispatcher rd = request.getRequestDispatcher("lista.jsp");
 		rd.forward(request, response);
-		
+
 	}
-	
-	protected void removerCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	// utiliza o serviço para remover o cliente e redireciona para o /Controller
+	protected void removerCliente(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		clienteDAO.RemoverCliente(id);	
+		controllerService.removerCliente(id);
 		response.sendRedirect("Controller");
 	}
-	
-	protected void listarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		cliente = clienteDAO.getCliente(Integer.parseInt(request.getParameter("id")));
-		request.setAttribute("id", cliente.getId());
-		request.setAttribute("nome", cliente.getNome());
-		request.setAttribute("email", cliente.getEmail());
-		request.setAttribute("telefone", cliente.getTelefone());
-		RequestDispatcher rd = request.getRequestDispatcher("/editar.jsp");
-		rd.forward(request, response);
+
+	// pega cliente e monta o request para exibir na tela de editar
+	protected void listarCliente(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		HttpServletRequest req = controllerService.preencherEditarRequest(request);
 		
+		RequestDispatcher rd = req.getRequestDispatcher("/editar.jsp");
+		rd.forward(req, response);
+
 	}
-	
-	protected void editarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		cliente.setId(Integer.parseInt(request.getParameter("id")));
-		cliente.setNome(request.getParameter("nome"));
-		cliente.setEmail(request.getParameter("email"));
-		cliente.setTelefone(request.getParameter("telefone"));
-		clienteDAO.AtualizarCliente(cliente.getId(), cliente);
+
+	// envia dados do request para o controllerService atualizar o cliente no banco
+	// e redireciona para o /Controller
+	protected void editarCliente(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		String nome = request.getParameter("nome");
+		String email = request.getParameter("email");
+		String telefone = request.getParameter("telefone");
+		
+		controllerService.atualizarCliente(id, nome, email, telefone);
 		response.sendRedirect("Controller");
 	}
-	
-	protected void adicionarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	// chama o service para adicionar novo cliente no banco
+	protected void adicionarCliente(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Cliente c = new Cliente();
 		c.setId(0);
 		c.setNome(request.getParameter("nome"));
 		c.setEmail(request.getParameter("email"));
 		c.setTelefone(request.getParameter("telefone"));
-		clienteDAO.AdicionarCliente(c);
+		controllerService.adicionarCliente(c);
 		response.sendRedirect("Controller");
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
