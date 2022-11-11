@@ -1,3 +1,7 @@
+/**
+ * Banco estático com List
+ */
+
 package dao;
 
 import java.util.ArrayList;
