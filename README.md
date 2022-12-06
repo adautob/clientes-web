@@ -7,7 +7,7 @@
 Integração do Back-End com o Front-End. Utilizando os fundamentos do Java para a Web com JavaEE. Considero importantíssimo entender os princípios e fundamento do Java para Web até chegar nos frameworks.
 
 ### Acesse aqui a versão demo:
-https://lnkd.in/dz7kNWY7
+https://bit.ly/3iGlJyR
 
 ## Layout web
 
